@@ -1,18 +1,13 @@
-﻿using Clipping.Models;
+﻿using Dados.Entidades;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Clipping.Context
+namespace Dados.Context
 {
-    public class Contexto: DbContext
+    public class Contexto : DbContext
     {
-
-        public Contexto(DbContextOptions<Contexto> options):base(options)
+        public Contexto(DbContextOptions<Contexto> options) : base(options)
         {
-       
+
         }
         public DbSet<Noticia> Noticias { get; set; }
 
@@ -33,3 +28,4 @@ namespace Clipping.Context
         }
     }
 }
+

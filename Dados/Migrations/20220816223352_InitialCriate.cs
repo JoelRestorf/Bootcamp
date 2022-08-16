@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Clipping.Migrations
+namespace Dados.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialCriate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

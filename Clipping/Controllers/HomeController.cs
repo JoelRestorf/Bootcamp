@@ -1,4 +1,5 @@
-﻿using Clipping.Context;
+﻿using Dados.Context;
+using Dados.Entidades;
 using Clipping.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
