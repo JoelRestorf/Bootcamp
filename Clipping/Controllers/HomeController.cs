@@ -40,6 +40,29 @@ namespace Clipping.Controllers
             return View(resultado);
         }
 
+        public IActionResult Sumary() 
+        {
+            var Categorizadas = _context.Noticias.Where(n => n.Positiva || n.Negativa || n.Neutra).Count();
+            var Positivas = _context.Noticias.Where(n => n.Positiva).Count();
+            var Negativas = _context.Noticias.Where(n => n.Negativa).Count();
+            var Neutras = _context.Noticias.Where(n => n.Neutra).Count();
+
+            ViewBag.Categorizadas = Categorizadas;
+            if (Categorizadas > 0)
+            {
+                ViewBag.PercentualPositivas = decimal.Divide(Positivas, Categorizadas) * 100;
+                ViewBag.PercentualNegativas = decimal.Divide(Negativas, Categorizadas) * 100;
+                ViewBag.PercentualNeutras = decimal.Divide(Neutras, Categorizadas) * 100;
+            }
+            else
+            {
+                ViewBag.PercentualPositivas = 0;
+                ViewBag.PercentualNegativas = 0;
+                ViewBag.PercentualNeutras = 0;
+            }
+
+            return View();
+        }
         public IActionResult Privacy()
         {
            
@@ -51,5 +74,62 @@ namespace Clipping.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [Route("/home/positiva")]
+        [HttpGet]
+        public IActionResult Positiva(int id)
+        {
+            try
+            {
+                var noticia = _context.Noticias.First(p => p.Id == id);
+                noticia.Positiva = true;
+                noticia.Negativa = false;
+                noticia.Neutra = false;
+                _context.SaveChanges();
+                return Ok(new { status = true });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { status = false, mensagem = ex.Message });
+            }
+        }
+        [Route("/home/negativa")]
+        [HttpGet]
+        public IActionResult Negativa(int id)
+        {
+            try
+            {
+                var noticia = _context.Noticias.First(p => p.Id == id);
+                noticia.Positiva = false;
+                noticia.Negativa = true;
+                noticia.Neutra = false;
+                _context.SaveChanges();
+                return Ok(new { status = true });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { status = false, mensagem = ex.Message });
+            }
+        }
+        [Route("/home/neutra")]
+        [HttpGet]
+        public IActionResult Neutra(int id)
+        {
+            try
+            {
+                var noticia = _context.Noticias.First(p => p.Id == id);
+                noticia.Positiva = false;
+                noticia.Negativa = false;
+                noticia.Neutra = true;
+                _context.SaveChanges();
+                return Ok(new { status = true });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { status = false, mensagem = ex.Message });
+            }
+        }
+
+
     }
 }

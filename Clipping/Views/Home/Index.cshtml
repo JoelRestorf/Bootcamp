@@ -20,17 +20,32 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var noticia in Model)
-        {
+        @{ 
+            var IdPositiva = "";
+            var IdNegativa = "";
+            var IdNeutra = "";
+            var classPositiva = "";
+            var classNegativa = "";
+            var classNeutra = "";
+            foreach (var noticia in Model)
+            {
+                IdPositiva = "lnkPositiva" + noticia.Id.ToString();
+                IdNegativa = "lnkNegativa" + noticia.Id.ToString();
+                IdNeutra = "lnkNeutra" + noticia.Id.ToString();
+
+                classPositiva = noticia.Positiva ? "btn-success" : "btn-outline-success";
+                classNegativa = noticia.Negativa ? "btn-danger" : "btn-outline-danger";
+                classNeutra = noticia.Neutra ? "btn-warning" : "btn-outline-warning";
         <tr>
             <td scope="row">@noticia.DataPublicacao.ToString()</td>
             <td><img src="@noticia.ImagemURL" width="100"></td>
             <td>@noticia.Titulo</td>
             <td>@noticia.Descricao</td>
             <td><a href="@noticia.URL" target="_blank">Visualizar</a></td>
-            <td><a href="#" class="btn btn-outline-success" style="width: 90px">Positiva</a> <a href="#" class="btn btn-outline-danger" style="width: 90px">Negativa</a> <a href="#" class="btn btn-outline-warning" style="width: 90px">Neutra</a></td>
+            <td><a id="@IdPositiva" href="javascript:void(0)" noticiaId="@noticia.Id" class="btn @classPositiva" style="width: 90px" onclick="Positiva(this);" >Positiva</a> <a id="@IdNegativa" href="javascript:void(0)" noticiaId="@noticia.Id" class="btn @classNegativa" style="width: 90px" onclick="Negativa(this);">Negativa</a> <a id="@IdNeutra" href="javascript:void(0)" noticiaId="@noticia.Id" class="btn @classNeutra" style="width: 90px" onclick="Neutra(this);">Neutra</a></td>
         </tr>
-        }
+                }
+            }
     </tbody>
 </table>
 

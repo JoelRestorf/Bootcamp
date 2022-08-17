@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Resultados";
+}
+
+@if(ViewBag.Categorizadas > 0)
+{
+    <div class="text-center">
+        <h1 class="display-4">Resultados da avaliação das Notícias</h1>
+        <br />
+    </div>
+    <div class="text-center">
+        <pie-chart id="pieChart" style="display:block;height:500px;width:500px;position:relative;">
+            <pchart-element name="Positivas" value="@ViewBag.PercentualPositivas" colour="#009933">
+                <pchart-element name="Negativas" value="@ViewBag.PercentualNegativas" colour="#ff0000">
+                    <pchart-element name="Neutras" value="@ViewBag.PercentualNeutras" colour="#ff9900">
+        </pie-chart>
+    </div>
+}
+@section Scripts{
+    <script>
+        window.onresize = function () {
+            var c = document.getElementById("pieChart");
+            c.resize();
+        }
+    </script>
+    <script type="text/javascript">
+        function myFunction(x) {
+            if (document.getElementById("left-menu").style.display == "block") {
+                document.getElementById("left-menu").style.display = "none";
+                document.getElementById("main-content").style.left = "0";
+                document.getElementById("main-content").style.width = "100%";
+            } else {
+                document.getElementById("left-menu").style.display = "block";
+                document.getElementById("main-content").style.left = document.getElementById("left-menu").offsetWidth;
+                document.getElementById("main-content").style.width = window.innerWidth - document.getElementById("left-menu").offsetWidth;
+            }
+            x.classList.toggle("change");
+            var c = document.getElementById("pieChart");
+            c.resize();
+        }
+    </script>
+    <script src="~/js/pie-chart-js.js" asp-append-version="true"></script>
+}
