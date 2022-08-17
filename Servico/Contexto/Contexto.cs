@@ -11,7 +11,7 @@ namespace Servico.Contexto
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP\\SQLEXPRESS;Database=Clipping;Trusted_Connection=True;MultipleActiveResultSets=true;");
+            optionsBuilder.UseSqlServer(@"Server=tcp:servidorbootcampici.database.windows.net,1433;Initial Catalog=Clipping;Persist Security Info=False;User ID=clipping;Password=@ICIBootcamp#17;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
     }
