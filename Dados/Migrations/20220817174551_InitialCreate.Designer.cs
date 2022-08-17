@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dados.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220816223352_InitialCriate")]
-    partial class InitialCriate
+    [Migration("20220817174551_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
