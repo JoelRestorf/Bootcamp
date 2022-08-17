@@ -7,7 +7,7 @@ namespace Servico.Contexto
 {
     internal class Contexto : DbContext
     {
-        public DbSet<Noticia> Noticia { get; set; }
+        public DbSet<Noticias> Noticias { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

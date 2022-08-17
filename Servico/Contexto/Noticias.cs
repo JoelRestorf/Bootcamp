@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Servico.Contexto
 {
-    public class Noticia
+    public class Noticias
     {
         public int Id { get; set; }
         public string Fonte { get; set; }

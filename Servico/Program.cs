@@ -10,7 +10,9 @@ namespace Servico
     {
         static void Main(string[] args)
         {
-            var noticias = new NewsApi().BuscarNoticiasTermo("Curitiba", DateTime.Now.AddMonths(-1), DateTime.Now);
+
+            //var noticias = new NewsApi().BuscarNoticiasTermo("Curitiba", DateTime.Now.AddMonths(-1), DateTime.Now);
+            NewsApi.BuscaNoticiasTermoPackage("Curitiba", DateTime.Now.AddMonths(-1));
         }
 
     }
