@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Servico": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7083",
+      "launchBrowser": false
+    }
+  }
+}
