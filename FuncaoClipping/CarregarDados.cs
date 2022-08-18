@@ -8,7 +8,7 @@ namespace FuncaoClipping
     public class CarregarDados
     {
         [FunctionName("CarregarDados")]
-        public void Run([TimerTrigger("04:00:00")]TimerInfo myTimer, ILogger log)
+        public void Run([TimerTrigger("00:01:00")]TimerInfo myTimer, ILogger log)
         {
             NewsApi.BuscaNoticiasTermoPackage("Curitiba", DateTime.Now.AddHours(-4));
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
